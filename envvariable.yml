@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: env
+spec:
+  containers:
+    - name: c001
+      image: nginx
+      env:
+        - name: myname
+          value: shaily
