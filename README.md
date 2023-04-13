@@ -39,5 +39,19 @@ kubectl get nodes
   kubectl apply -f replicaset.yml
    kubectl describe rs myr
    kubectl get rs
-   
-  
+   ***************** Deployments****************
+   kubectl apply -f deployment.yml
+   kubectl get deploy  #to check deployments
+    kubectl get pod
+kubectl describe deploy mydeployment ######## more information about deployment
+kubectl get rs
+kubectl scale --replicas=1 deploy mydeployment  #### to scal up and down the replicaset 
+kubectl scale --replicas=5 deploy mydeployments
+kubectl logs -f mydeployments-74b5887dc8-922rl   #### to check the what is running inside container
+kubectl exec mydeployments-7dcc44d4bf-7jqzt -- cat /etc/os-release  ######## to check what is the image and server inside the container
+kubectl rollout status deployment mydeployments   ###to check the status of depoyment
+kubectl rollout history deployment mydeployments
+kubectl rollout undo deploy/mydeployments
+kubectl rollout undo deploy/mydeployments
+
+
