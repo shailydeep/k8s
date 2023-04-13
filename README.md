@@ -26,4 +26,13 @@ kubectl get nodes
  kubectl describe pod nodelabels
  kubectl label nodes minikube hardware=t2-medium
  kubectl delete node minikube
+ ************Repication-Controller***************
+ kubectl apply -f replicasetPod.yml
+ kubectl get rc
+ kubectl get pod
+ kubectl describe rc myreplica
+ kubectl delete pod myreplica-cp7r7
+ kubectl get pods --show-labels
+  kubectl scale --replicas=2 rc -l myname=shailythaku
+  kubectl scale --replicas=5 rc -l myname=shailythakur
  
