@@ -35,4 +35,9 @@ kubectl get nodes
  kubectl get pods --show-labels
   kubectl scale --replicas=2 rc -l myname=shailythaku
   kubectl scale --replicas=5 rc -l myname=shailythakur
- 
+  ******************ReplicaSet*****************
+  kubectl apply -f replicaset.yml
+   kubectl describe rs myr
+   kubectl get rs
+   
+  
