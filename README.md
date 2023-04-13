@@ -20,4 +20,10 @@ kubectl exec multictrpod -it -c c002 -- /bin/bash
  kubectl get pods -l env=devlopment,class=pod
  kubectl get pods -l env!=devlopment,class!=pods 
  kubectl delete pods -l 'env in(devlopment)'
+ ****************NodeLabels******************
+kubectl get nodes
+ kubectl apply -f nodelabels.yml
+ kubectl describe pod nodelabels
+ kubectl label nodes minikube hardware=t2-medium
+ kubectl delete node minikube
  
