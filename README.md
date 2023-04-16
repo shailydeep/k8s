@@ -60,6 +60,7 @@ kubectl exec testpod -it -c ctr1 -- /bin/bash
 now install the curl application to access the the other container
 then you can access other container by ysing localhost
 curl localhost:80
-############### 
+###############multi-pod-containe###############
+
 
 
