@@ -6,9 +6,9 @@ spec:
   containers:
     - name: c001
       image: ubuntu
-      command: ["/bin/bash", "-c", "while true; do echo Technical-Guftgu; sleep 5 ; done"]
+      command: ["/bin/bash", "-c", "while true; do echo hello-shaily; sleep 5 ; done"]
     - name: c002
       image: nginx
-      command: ["/bin/bash", "-c", "while true; do echo Hello-Bhupinder; sleep 5 ; done"]
+      command: ["/bin/bash", "-c", "while true; do echo Hello-shaily; sleep 5 ; done"]
 
 
