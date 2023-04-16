@@ -77,6 +77,15 @@ kubectl get pod -o wide
 is will show the service virtual ip
 then,
 curl v-ip
+vi hostpath.yml
+kubectl apply -f hostpath.yml
+kubectl get pods
+kubectl exec myvolhostpath -it -c testc -- /bin/bash   ### go inside the container of pod 
+then create some files inside the container
+then exit
+now you can see those created file on you hostmachine
+
+
 
 
 
