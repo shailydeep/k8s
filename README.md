@@ -60,7 +60,14 @@ kubectl exec testpod -it -c ctr1 -- /bin/bash
 now install the curl application to access the the other container
 then you can access other container by ysing localhost
 curl localhost:80
-###############multi-pod-containe###############
+###############multi-pod-container communication###############
+kubectl apply -f multupod.yml
+kubectl aaply -f multipod2.yml
+kubectl get pods
+now both containers are running
+then we can access container by using the pod ip addrresses
+curl 172.17.0.2:80
+
 
 
 
