@@ -53,5 +53,13 @@ kubectl rollout status deployment mydeployments   ###to check the status of depo
 kubectl rollout history deployment mydeployments
 kubectl rollout undo deploy/mydeployments
 kubectl rollout undo deploy/mydeployments
+################ multicontainer in a pod ############################
+kubectl apply -f 2cntr2pod.yml
+kubectl get pods
+kubectl exec testpod -it -c ctr1 -- /bin/bash
+now install the curl application to access the the other container
+then you can access other container by ysing localhost
+curl localhost:80
+############### 
 
 
