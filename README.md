@@ -67,6 +67,17 @@ kubectl get pods
 now both containers are running
 then we can access container by using the pod ip addrresses
 curl 172.17.0.2:80
+#############Service-object##############
+vi servicedeploy.yml
+kubectl apply -f servicedeploy.yml
+vi service.yml
+kubectl apply -f service.yml
+now you can access pod by using the service virtual ip
+kubectl get pod -o wide
+is will show the service virtual ip
+then,
+curl v-ip
+
 
 
 
