@@ -145,6 +145,22 @@ kubectl delete pod task-pv-pod
 kubectl delete pvc task-pv-claim
 kubectl delete pv task-pv-volume
 
+############## LivenessProbe#################
+vi livenessprobe.yml
+kubectl apply -f livenessprobe.yml
+kubectl get pod
+kubectl exec pod_name -it -- /bin/bash
+now toy have created file inside the container /tmp/healthy
+cat /tmp/healthy   #### fi this command is successful then is return 0
+0   ### for status pass
+1   ### error
+2 #### error
+exit/terminate the container it return code error 137
+to check the status command is 
+echo $?
+
+
+
 
 
 
