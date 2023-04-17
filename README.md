@@ -84,6 +84,66 @@ kubectl exec myvolhostpath -it -c testc -- /bin/bash   ### go inside the contain
 then create some files inside the container
 then exit
 now you can see those created file on you hostmachine
+############# Persistent-Volume/PErsistentVolumeClaim##############3
+Before you begin
+You need to have a Kubernetes cluster that has only one Node, and the kubectl command-line tool must be configured to communicate with your cluster. If you do not already have a single-node cluster, you can create one by using Minikube.
+
+Familiarize yourself with the material in Persistent Volumes.
+Create an index.html file on your Node
+Open a shell to the single Node in your cluster. How you open a shell depends on how you set up your cluster. For example, if you are using Minikube, you can open a shell to your Node by entering minikube ssh.
+
+In your shell on that Node, create a /mnt/data directory:
+
+
+In the /mnt/data directory, create an index.html file:
+# This again assumes that your Node uses "sudo" to run commands
+# as the superuser
+sudo sh -c "echo 'Hello from Kubernetes storage' > /mnt/data/index.html"
+Create a PersistentVolume
+In this exercise, you create a hostPath PersistentVolume. Kubernetes supports hostPath for development and testing on a single-node cluster. A hostPath PersistentVolume uses a file or directory on the Node to emulate network-attached storage.
+
+In a production cluster, you would not use hostPath. Instead a cluster administrator would provision a network resource like a Google Compute Engine persistent disk, an NFS share, or an Amazon Elastic Block Store volume. Cluster administrators can also use StorageClasses to set up dynamic provisioning.
+The configuration file specifies that the volume is at /mnt/data on the cluster's Node. The configuration also specifies a size of 10 gibibytes and an access mode of ReadWriteOnce, which means the volume can be mounted as read-write by a single Node. It defines the StorageClass name manual for the PersistentVolume, which will be used to bind PersistentVolumeClaim requests to this PersistentVolume.
+
+Create the PersistentVolume:
+vi persistentvolume.yml
+kubectl apply -f persistentvolume.yml
+kubectl get pv
+The output shows that the PersistentVolume has a STATUS of Available. This means it has not yet been bound to a PersistentVolumeClaim.
+Create a PersistentVolumeClaim
+The next step is to create a PersistentVolumeClaim. Pods use PersistentVolumeClaims to request physical storage. In this exercise, you create a PersistentVolumeClaim that requests a volume of at least three gibibytes that can provide read-write access for at least one Node.
+
+Here is the configuration file for the PersistentVolumeClaim:
+vi  pcClaim-volume.yml
+kubectl apply -f pcClaim.ym
+kubectl get pvc
+Now the output shows a STATUS of Bound.Now the output shows a STATUS of Bound.
+Create a Pod / you can also create deployment for pod replicSET
+The next step is to create a Pod that uses your PersistentVolumeClaim as a volume.
+
+Here is the configuration file for the Pod:
+Notice that the Pod's configuration file specifies a PersistentVolumeClaim, but it does not specify a PersistentVolume. From the Pod's point of view, the claim is a volume.
+
+Create the Pod:
+Get a shell to the container running in your Pod:
+kubectl exec -it task-pv-pod -- /bin/bash
+ls
+cd /mnt
+apt update
+apt install curl
+curl http://localhost/
+The output shows the text that you wrote to the index.html file on the hostPath volume:
+
+Hello from Kubernetes storage
+
+If you see that message, you have successfully configured a Pod to use storage from a PersistentVolumeClaim.
+
+Clean up
+Delete the Pod, the PersistentVolumeClaim and the PersistentVolume:
+
+kubectl delete pod task-pv-pod
+kubectl delete pvc task-pv-claim
+kubectl delete pv task-pv-volume
 
 
 
