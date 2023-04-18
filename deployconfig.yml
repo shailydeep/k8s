@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: configpod
+spec:
+  containers:
+  - name: c1
+    image: centos
+    command: ["/bin/bash", "-c", "while true; do echo shailyThakur; sleep 5 ; done"]
+    volumeMounts:
+      - name: testconfig
+        mountPath: "/tmp/config"   # the config files will be mounted as ReadOnly by default here
+  volumes:
+  - name: testconfig
+    configMap:
+       name: app   # thisi should match the config map name created in the first step
+       items:
+       - key: sample.conf
+         path: sample.conf
