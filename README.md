@@ -198,8 +198,8 @@ vi secrets.yml
 kubectl apply -f secrets.yml
 # go inside the container and check your data only container can access the data in secrets other person can not
 
-kubectl exec mysecret -it -- /bin/bash
 
+kubectl exec mysecret -it -- /bin/bash
 
 
 
