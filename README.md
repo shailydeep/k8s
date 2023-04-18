@@ -210,7 +210,7 @@ kubectl config set-context $(kubectl config current-context) --namespace=dev   #
 kubectl get pod 
 kubectl config view | grep namespace:      # show the namespace name
 kubectl config view    # more information about the namespace
-kubectl get pods -n default      # if we have set the above context then it is found resource in default namespace using -n flag.
+kubectl get pods -n default      # if we have set the above context then it is found resource in default namespace using -n flag...
 
 
 
