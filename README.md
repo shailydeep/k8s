@@ -160,6 +160,32 @@ to check the status command is
 echo $?
 
 
+#########ConfigMap#################
+# by volume configmap 
+# first you need to create config file for configmap
+vi sampl.conf
+# it is a configuration file
+kubectl create configmap cnf_name --from-file=sampl.yml
+# now crate a pod 
+vi deployconfig.yml
+kubectl apply -f deployconfig.yml
+kubectl get pod
+kubectl exec pod_name -it -- /bin/bash  # go inside the container 
+cd /tmp/config
+ls
+sample.conf
+# by environment variable configmap
+vi cnfenvpod.yml
+kubectl apply -f cnfenvpod.yml
+kubectl get pods
+kubectl exec pod_name -it -- /bin/bash
+env     # now you can see create configfile in env format
+
+
+
+
+
+
 
 
 
