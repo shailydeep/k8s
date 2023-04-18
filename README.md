@@ -201,11 +201,16 @@ kubectl apply -f secrets.yml
 
 kubectl exec mysecret -it -- /bin/bash
 
-
-
-
-
-
+############Namespace#######################
+# create namespace 
+vi namespace.yml
+ kubectl apply -f namespacepod.yml -n dev
+ kubectl get pod -n dev 
+kubectl config set-context $(kubectl config current-context) --namespace=dev   # this command is used to set the namespace so k8s by default found resources in created namespace
+kubectl get pod 
+kubectl config view | grep namespace:      # show the namespace name
+kubectl config view    # more information about the namespace
+kubectl get pods -n default      # if we have set the above context then it is found resource in default namespace using -n flag.
 
 
 
