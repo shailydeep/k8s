@@ -181,6 +181,25 @@ kubectl get pods
 kubectl exec pod_name -it -- /bin/bash
 env     # now you can see create configfile in env format
 
+############secrets#########################
+now you need to creare two file you define the data like username and password
+
+ echo "root" > username.txt; echo "mypassword" > password.txt
+ # create secret 
+ kubectl create secret generic mysecret --from-file=username.txt --from-file=password.txt
+
+kubectl get secret
+kubectl describe secret mysecret
+output like 
+username 16 bytes
+password 5 bytes
+# now create a pod 
+vi secrets.yml
+kubectl apply -f secrets.yml
+# go inside the container and check your data only container can access the data in secrets other person can not
+
+kubectl exec mysecret -it -- /bin/bash
+
 
 
 
