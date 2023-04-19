@@ -212,7 +212,9 @@ kubectl config view | grep namespace:      # show the namespace name
 kubectl config view    # more information about the namespace
 kubectl get pods -n default      # if we have set the above context then it is found resource in default namespace using -n flag...
 
+########Reasource Quata #######################33
 
+A resource quota, defined by a ResourceQuota object, provides constraints that limit aggregate resource consumption per namespace. It can limit the quantity of objects that can be created in a namespace by type, as well as the total amount of compute resources that may be consumed by resources in that namespace.
 
 
 
