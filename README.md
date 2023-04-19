@@ -221,4 +221,26 @@ now check information of the and check the pod is created or not
 kubectl describe pod pod_name
 
 
+############## Horizontal Pod Autoscaler ###################################
+
+first of all you need install the metric server for horizontal autoscaller 
+install:
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+kubectl top nodes
+kubectl get deployment metrics-server -n kube-system
+# enavle the metric server
+minikube addons enable metrics-server
+kubectl get namespaces    # get the namespace of kube-system 
+kubectl get pods -n kube-system
+vi HPAdeployment.yml
+kubectl apply -f HPAdeployment.yml
+kubectl autoscale deployment mydeploy --cpu-percent=20 --min=1 --max=1     # set the horizontal autoscale pod
+kubectl get all
+watch kubectl get all       # see live autoscaling of the pod
+# take a new terminal for loading the machine
+then
+# go inside the container and load..........
+kubectl exec pod_name -it -- /bin/bash
+apt update
+
 
