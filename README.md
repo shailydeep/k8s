@@ -215,7 +215,10 @@ kubectl get pods -n default      # if we have set the above context then it is f
 ########Reasource Quata #######################33
 
 A resource quota, defined by a ResourceQuota object, provides constraints that limit aggregate resource consumption per namespace. It can limit the quantity of objects that can be created in a namespace by type, as well as the total amount of compute resources that may be consumed by resources in that namespace.
-
+creating files 
+then create pods
+now check information of the and check the pod is created or not
+kubectl describe pod pod_name
 
 
 
