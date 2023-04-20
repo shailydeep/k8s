@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myfirstpod
+  labels:
+    label1: shailu
+    label2: shaily
+    label3: shaily
+spec:
+  containers:
+   - name: firstcontainer
+     image: ubuntu
+     env:
+      - name: myname
+        value: shaily
+      - name: city
+        value: aligarh
+  initContainers:
+    - name: initcontainer
+      image: nginx
+      args: ["sleep", "30" ]
