@@ -1,0 +1,14 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: jobpod
+spec:
+  template:
+    metadata:
+      name: jobpod
+    spec:
+      containers:
+       - name: counter
+         image: centos:7
+         command: ["bin/bash", "-c", "echo shaily-thakur; sleep 5"]
+       restartPolicy: Never
