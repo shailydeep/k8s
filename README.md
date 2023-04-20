@@ -244,3 +244,24 @@ kubectl exec pod_name -it -- /bin/bash
 apt update
 
 
+################3 Job #####################
+
+job are kind of pod in kubernetes it is not deleted itself 
+it is a object if k8s
+vi jobs.yml
+kubectl apply -f jobs.yml
+kubectl get pods
+watch kubectl get pods
+########### multijobs####################
+same concept as a jobs we can create multiple pod at a time
+############# cron jobs ######################
+vi cronjob.yml
+kubectl apply -f cronjob.yml
+kubectl get pods
+watch kubectl get pods
+
+
+##################
+
+
+
