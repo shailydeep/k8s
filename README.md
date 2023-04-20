@@ -261,7 +261,12 @@ kubectl get pods
 watch kubectl get pods
 
 
-##################
+################## init container ###################33
+vi initctr.ym
+kubectl apply -f initctr.yml
+kubectl get pods
+watch kubectl get pods
+
 
 
 
